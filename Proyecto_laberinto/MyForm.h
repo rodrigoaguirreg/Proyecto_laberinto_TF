@@ -15,13 +15,15 @@ namespace Proyectolaberinto {
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
-	CControladora* oControladora = new CControladora();
-		Bitmap^solido = gcnew Bitmap("sprites\\bmpSolido.png");
-		Bitmap^camino = gcnew Bitmap("sprites\\camino.png");
-		Bitmap^base = gcnew Bitmap("sprites\\bmpSolido.png");
-		Bitmap^prota = gcnew Bitmap("sprites\\protagonista.png");
-		Bitmap^Asesino = gcnew Bitmap("sprites\\asesino.png");
-		Bitmap^aliados = gcnew Bitmap("sprites\\aliados.png");
+		CControladora* oControladora = new CControladora();
+		Bitmap^ solido = gcnew Bitmap("sprites\\bmpSolido.png");
+		Bitmap^ camino = gcnew Bitmap("sprites\\camino.png");
+		Bitmap^ base = gcnew Bitmap("sprites\\bmpSolido.png");
+		Bitmap^ prota = gcnew Bitmap("sprites\\protagonista.png");
+		Bitmap^ Asesino = gcnew Bitmap("sprites\\asesino.png");
+		Bitmap^ aliados = gcnew Bitmap("sprites\\aliados.png");
+		Bitmap^ corrupto = gcnew Bitmap("sprites\\corrupto.png");
+		int** matriz;
 		MyForm(void)
 		{
 			InitializeComponent();
@@ -82,17 +84,17 @@ namespace Proyectolaberinto {
 		}
 #pragma endregion
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Graphics^g = this->CreateGraphics();
-		BufferedGraphicsContext^espacio = BufferedGraphicsManager::Current;
-		BufferedGraphics^buffer = espacio->Allocate(g, this->ClientRectangle);
-		oControladora->dibujar(buffer->Graphics, base, solido, camino, prota, aliados);
+		Graphics^ g = this->CreateGraphics();
+		BufferedGraphicsContext^ espacio = BufferedGraphicsManager::Current;
+		BufferedGraphics^ buffer = espacio->Allocate(g, this->ClientRectangle);
+		oControladora->dibujar(g, base,solido, camino,prota,aliados,corrupto,Asesino, matriz);
 		buffer->Render(g);
 		delete buffer, espacio, g;
 	}
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		oControladora->MapaAleatoria();
 	}
-	private: System::Void MantenerTecla(System::Object^  sender, System::Windows::Forms::KeyEventArgs^  e) {
+	private: System::Void MantenerTecla(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		switch (e->KeyCode)
 		{
 		case Keys::Up:
@@ -112,42 +114,41 @@ namespace Proyectolaberinto {
 			break;
 		}
 	}
-	private: System::Void ultimaTeclaPresionada(System::Object^  sender, System::Windows::Forms::KeyEventArgs^  e) {
+	private: System::Void ultimaTeclaPresionada(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		switch (e->KeyCode)
 		{
 		default:
-			oControladora->getoProta()->setDireccion(Direcciones ::Ninguna);
+			oControladora->getoProta()->setDireccion(Direcciones::Ninguna);
 			break;
 		}
 	}
-	};
+	
+
+private: System::Void MantenerTeclaAliados(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	switch (e->KeyCode)
+	{
+	case Keys::Up:
+		oControladora->getoAliados()->setDireccion(Direcciones::Arriba);
+		break;
+	case Keys::Down:
+		oControladora->getoAliados()->setDireccion(Direcciones::Abajo);
+		break;
+	case Keys::Left:
+		oControladora->getoAliados()->setDireccion(Direcciones::Izquierda);
+		break;
+	case Keys::Right:
+		oControladora->getoAliados()->setDireccion(Direcciones::Derecha);
+		break;
+
+	default:
+		break;
+	}
 }
-
-private: System::Void MantenerTeclaAliados(System::Object^  sender, System::Windows::Forms::KeyEventArgs^  e) {
-		switch (e->KeyCode)
-		{
-		case Keys::Up:
-			oControladora->getoAliados()->setDireccion(Direcciones::Arriba);
-			break;
-		case Keys::Down:
-			oControladora->getoAliados()->setDireccion(Direcciones::Abajo);
-			break;
-		case Keys::Left:
-			oControladora->getoAliados()->setDireccion(Direcciones::Izquierda);
-			break;
-		case Keys::Right:
-			oControladora->getoAliados()->setDireccion(Direcciones::Derecha);
-			break;
-
-		default:
-			break;
-		}
-	}
-	private: System::Void ultimaTeclaPresionadaAliados(System::Object^  sender, System::Windows::Forms::KeyEventArgs^  e) {
+	private: System::Void ultimaTeclaPresionadaAliados(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		switch (e->KeyCode)
 		{
 		default:
-			oControladora->getoAliados()->setDireccion(Direcciones ::Ninguna);
+			oControladora->getoAliados()->setDireccion(Direcciones::Ninguna);
 			break;
 		}
 	}

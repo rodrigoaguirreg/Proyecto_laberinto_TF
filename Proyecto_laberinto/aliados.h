@@ -4,8 +4,8 @@ using namespace System::Drawing;
 enum Direcciones { Arriba, Abajo, Izquierda, Derecha, Ninguna };
 class CAliados :public Cprotagonista
 {
-    public:
-    CAliados(int x, int y) : Cprotagonista( x,  y){
+public:
+	CAliados(int x, int y) : Cprotagonista(x, y) {
 		//posicion del jugador
 		this->x = x;
 		this->y = y;
@@ -23,29 +23,29 @@ class CAliados :public Cprotagonista
 		direccion = Direcciones::Ninguna;
 		ultima = Direcciones::Abajo;
 	}
-    ~CAliados(){
-        
-    }
-    void setDireccion(Direcciones direccion ) {
+	~CAliados() {
+
+	}
+	void setDireccion(Direcciones direccion) {
 		this->direccion = direccion;
 	}
-	void dibujarAliados(Graphics^g, Bitmap^aliados) {
-		Rectangle PorcionAUsar = Rectangle(indiceX*ancho, indiceY* alto, ancho, alto);
-		Rectangle Aumento = Rectangle(x, y, ancho*3, alto*3);
+	void dibujarAliados(Graphics^ g, Bitmap^ aliados) {
+		Rectangle PorcionAUsar = Rectangle(indiceX * ancho, indiceY * alto, ancho, alto);
+		Rectangle Aumento = Rectangle(x, y, ancho * 3, alto * 3);
 		g->DrawImage(aliados, Aumento, PorcionAUsar, GraphicsUnit::Pixel);
-			x += dx;
-			y += dy;
+		x += dx;
+		y += dy;
 	}
-    void moverAliados(Graphics^g, Bitmap^aliados) {
+	void moverAliados(Graphics^ g, Bitmap^ aliados) {
 		direccion == Arriba ? ancho = 45 : ancho = 46;
 		switch (direccion)
 		{
 		case Direcciones::Arriba:
 			indiceX = 3;
-				if (indiceY >= 1 && indiceY< 2)
-					indiceY++;
-				else
-					indiceY = 1;
+			if (indiceY >= 1 && indiceY < 2)
+				indiceY++;
+			else
+				indiceY = 1;
 			dx = 0;
 			dy = 10;
 			ultima = Direcciones::Arriba;
@@ -62,8 +62,8 @@ class CAliados :public Cprotagonista
 			ultima = Direcciones::Abajo;
 			break;
 		case Direcciones::Izquierda:
-			indiceY =1;
-			if (indiceX>= 1 && indiceX < 2)
+			indiceY = 1;
+			if (indiceX >= 1 && indiceX < 2)
 				indiceX++;
 			else
 				indiceX = 1;
@@ -130,3 +130,4 @@ private:
 
 	Direcciones direccion;
 	Direcciones ultima;//ultima tecla presionada para saber la posicion en la que la deje
+};

@@ -4,7 +4,7 @@ using namespace System::Drawing;
 enum Direcciones { Arriba, Abajo, Izquierda, Derecha, Ninguna };
  class Cprotagonista
 {
-    protected:
+    public:
 		Cprotagonista(int x, int y){
 		//posicion del jugador
 		this->x = x;

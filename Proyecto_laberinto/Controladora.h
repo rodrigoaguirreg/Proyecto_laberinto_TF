@@ -20,13 +20,13 @@ public:
 	void MapaAleatoria() {
 		Mapa->generarMatriz();
 	}
-void dibujar(Graphics^ g, Bitmap^ base, Bitmap^ solido, Bitmap^ camino){
+void dibujar(Graphics^ g, Bitmap^ base, Bitmap^ solido, Bitmap^ camino,Bitmap^ prota, Bitmap^aliados, Bitmap^corrupto, Bitmap^Asesino, int **matriz){
 
 		Mapa->PintarBase(g, base);
-		Mapa->oAliadosMatriz(g, solido, camino);
+		//Mapa->oAliadosMatriz(g, solido, camino);
 		oProta->moverProta(g, prota);
 		oAliados->moverAliados(g, aliados);
-		oAsesino->moverAsesino(g, asesino);
+		oAsesino->dibujar(g, Asesino, corrupto, matriz);
 		}
 
 	Cprotagonista* getoProta() {
