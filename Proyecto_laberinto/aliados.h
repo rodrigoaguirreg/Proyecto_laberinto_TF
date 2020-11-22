@@ -1,7 +1,7 @@
 #pragma once
 #include "protagonista.h"
 using namespace System::Drawing;
-enum Direcciones { Arriba, Abajo, Izquierda, Derecha, Ninguna };
+enum Direccioness { Arribaa, Abajoo, Izquierdaa, Derechaa, Ningunaa };
 class CAliados :public Cprotagonista
 {
 public:
@@ -20,13 +20,13 @@ public:
 
 		indiceX = 0;
 		indiceY = 0;
-		direccion = Direcciones::Ninguna;
-		ultima = Direcciones::Abajo;
+		direccion = Direccioness::Abajoo;
+		ultima = Direccioness::Abajoo;
 	}
 	~CAliados() {
 
 	}
-	void setDireccion(Direcciones direccion) {
+	void setDireccion(Direccioness direccion) {
 		this->direccion = direccion;
 	}
 	void dibujarAliados(Graphics^ g, Bitmap^ aliados) {
@@ -37,21 +37,21 @@ public:
 		y += dy;
 	}
 	void moverAliados(Graphics^ g, Bitmap^ aliados) {
-		direccion == Arriba ? ancho = 45 : ancho = 46;
+		direccion == Arribaa ? ancho = 45 : ancho = 46; //ni idea v,:
 		switch (direccion)
 		{
-		case Direcciones::Arriba:
-			indiceX = 3;
-			if (indiceY >= 1 && indiceY < 2)
-				indiceY++;
-			else
-				indiceY = 1;
+		case Direccioness::Arribaa:
+			indiceY = 0;
+				if (indiceX >= 1 && indiceX < 2)
+					indiceX++;
+				else
+					indiceX = 1;
 			dx = 0;
-			dy = 10;
-			ultima = Direcciones::Arriba;
+			dy = -10;
+			ultima = Direccioness::Arribaa;
 
 			break;
-		case Direcciones::Abajo:
+		case Direccioness::Abajoo:
 			indiceX = 0;
 			if (indiceY >= 1 && indiceY < 2)
 				indiceY++;
@@ -59,43 +59,43 @@ public:
 				indiceY = 1;
 			dx = 0;
 			dy = -10;
-			ultima = Direcciones::Abajo;
+			ultima = Direccioness::Abajoo;
 			break;
-		case Direcciones::Izquierda:
-			indiceY = 1;
-			if (indiceX >= 1 && indiceX < 2)
+		case Direccioness::Izquierdaa:
+			indiceY =3;
+			if (indiceX>= 1 && indiceX < 2)
 				indiceX++;
 			else
 				indiceX = 1;
 			dx = -10;
 			dy = 0;
-			ultima = Direcciones::Izquierda;
+			ultima = Direccioness::Izquierdaa;
 			break;
-		case Direcciones::Derecha:
-			indiceY = 2;
+		case Direccioness::Derechaa:
+			indiceY = 1;
 			if (indiceX >= 1 && indiceX < 2)
 				indiceX++;
 			else
 				indiceX = 1;
 			dx = 10;
 			dy = 0;
-			ultima = Direcciones::Derecha;
+			ultima = Direccioness::Derechaa;
 			break;
-		case Direcciones::Ninguna:
+		case Direccioness::Ningunaa:
 			dx = dy = 0;
-			if (ultima == Direcciones::Abajo) {
+			if (ultima == Direccioness::Abajoo) {
 				indiceX = 0;
 				indiceY = 2;
 			}
-			if (ultima == Direcciones::Arriba) {
+			if (ultima == Direccioness::Arribaa) {
 				indiceX = 0;
 				indiceY = 0;
 			}
-			if (ultima == Direcciones::Derecha) {
+			if (ultima == Direccioness::Derechaa) {
 				indiceX = 1;
 				indiceY = 1;
 			}
-			if (ultima == Direcciones::Izquierda) {
+			if (ultima == Direccioness::Izquierdaa) {
 				indiceX = 1;
 				indiceY = 3;
 			}
@@ -105,7 +105,7 @@ public:
 		}
 		dibujarProta(g, aliados);
 	}
-protected:
+private:
 	int x;
 	int y;
 	int dx;//horizontal
@@ -115,9 +115,11 @@ protected:
 	int indiceX;//animacion
 	int indiceY;//animacion
 
-	Direcciones direccion;
-	Direcciones ultima;//ultima tecla presionada para saber la posicion en la que la deje
+	Direccioness direccion;
+	Direccioness ultima;
 
+}//ultima tecla presionada para saber la posicion en la que la deje
+/*
 private:
 	int x;
 	int y;
@@ -131,3 +133,4 @@ private:
 	Direcciones direccion;
 	Direcciones ultima;//ultima tecla presionada para saber la posicion en la que la deje
 };
+*/

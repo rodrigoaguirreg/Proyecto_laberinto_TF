@@ -87,7 +87,7 @@ namespace Proyectolaberinto {
 		Graphics^ g = this->CreateGraphics();
 		BufferedGraphicsContext^ espacio = BufferedGraphicsManager::Current;
 		BufferedGraphics^ buffer = espacio->Allocate(g, this->ClientRectangle);
-		oControladora->dibujar(g, base,solido, camino,prota,aliados,corrupto,Asesino, matriz);
+		oControladora->dibujar(g, base, solido, camino, prota, aliados, corrupto, Asesino, matriz);
 		buffer->Render(g);
 		delete buffer, espacio, g;
 	}
@@ -122,28 +122,28 @@ namespace Proyectolaberinto {
 			break;
 		}
 	}
-	
 
-private: System::Void MantenerTeclaAliados(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-	switch (e->KeyCode)
-	{
-	case Keys::Up:
-		oControladora->getoAliados()->setDireccion(Direcciones::Arriba);
-		break;
-	case Keys::Down:
-		oControladora->getoAliados()->setDireccion(Direcciones::Abajo);
-		break;
-	case Keys::Left:
-		oControladora->getoAliados()->setDireccion(Direcciones::Izquierda);
-		break;
-	case Keys::Right:
-		oControladora->getoAliados()->setDireccion(Direcciones::Derecha);
-		break;
 
-	default:
-		break;
+	private: System::Void MantenerTeclaAliados(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		switch (e->KeyCode)
+		{
+		case Keys::Up:
+			oControladora->getoAliados()->setDireccion(Direcciones::Arriba);
+			break;
+		case Keys::Down:
+			oControladora->getoAliados()->setDireccion(Direcciones::Abajo);
+			break;
+		case Keys::Left:
+			oControladora->getoAliados()->setDireccion(Direcciones::Izquierda);
+			break;
+		case Keys::Right:
+			oControladora->getoAliados()->setDireccion(Direcciones::Derecha);
+			break;
+
+		default:
+			break;
+		}
 	}
-}
 	private: System::Void ultimaTeclaPresionadaAliados(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		switch (e->KeyCode)
 		{
