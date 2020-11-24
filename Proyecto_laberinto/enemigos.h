@@ -1,8 +1,15 @@
-#ifndef _ENEMIGO_H_
-#define _ENEMIGO_H_
+#pragma once
+
 #include <ctime>
 #include <cstdlib>
+
+
+#ifndef _ENEMIGO_H_
+#define _ENEMIGO_H_
+
+using namespace System;
 using namespace System::Drawing;
+
 enum Estado_Enemigo { Eliminado, Normal, asesino };
 class CAsesino
 {

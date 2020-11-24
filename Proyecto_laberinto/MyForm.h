@@ -1,5 +1,6 @@
 #pragma once
 #include "Controladora.h"
+
 namespace Proyectolaberinto {
 
 	using namespace System;
@@ -27,9 +28,7 @@ namespace Proyectolaberinto {
 		MyForm(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: agregar código de constructor aquí
-			//
+			oControladora=gcnew CControladora(3,4,20);
 		}
 
 	protected:
@@ -89,6 +88,9 @@ namespace Proyectolaberinto {
 		BufferedGraphics^ buffer = espacio->Allocate(g, this->ClientRectangle);
 		oControladora->dibujar(g, base, solido, camino, prota, aliados, corrupto, Asesino, matriz);
 		buffer->Render(g);
+
+		if(oControladora->Mover(g)== false)
+			this->Close();
 		delete buffer, espacio, g;
 	}
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
@@ -128,16 +130,16 @@ namespace Proyectolaberinto {
 		switch (e->KeyCode)
 		{
 		case Keys::Up:
-			oControladora->getoAliados()->setDireccion(Direcciones::Arriba);
+			oControladora->getoAliados()->setDireccionn(Direccioness::Arribaa);
 			break;
 		case Keys::Down:
-			oControladora->getoAliados()->setDireccion(Direcciones::Abajo);
+			oControladora->getoAliados()->setDireccionn(Direccioness::Abajoo);
 			break;
 		case Keys::Left:
-			oControladora->getoAliados()->setDireccion(Direcciones::Izquierda);
+			oControladora->getoAliados()->setDireccionn(Direccioness::Izquierdaa);
 			break;
 		case Keys::Right:
-			oControladora->getoAliados()->setDireccion(Direcciones::Derecha);
+			oControladora->getoAliados()->setDireccionn(Direccioness::Derechaa);
 			break;
 
 		default:
@@ -148,7 +150,7 @@ namespace Proyectolaberinto {
 		switch (e->KeyCode)
 		{
 		default:
-			oControladora->getoAliados()->setDireccion(Direcciones::Ninguna);
+			oControladora->getoAliados()->setDireccionn(Direcciones::Ninguna);
 			break;
 		}
 	}
