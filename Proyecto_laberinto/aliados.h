@@ -119,7 +119,7 @@ private:
 	float alto;
 	int indiceX;//animacion
 	int indiceY;//animacion
-	int tiempo;//animacion
+	int tiempo;//tiempo
 
 	Direccioness direccion;
 	Direccioness ultima;

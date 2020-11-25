@@ -14,7 +14,7 @@ public:
 		oProta = new Cprotagonista(50, 50, v);
 		oAliados = new CAliados(50, 50,t);
 		oAsesino = new CAsesino();
-		tiempo=t* 1000;
+		tiempo = t * 1000;
 	}
 
 	~CControladora() {}
@@ -40,13 +40,26 @@ void dibujar(Graphics^ g, Bitmap^ base, Bitmap^ solido, Bitmap^ camino,Bitmap^ p
 	CAliados* getoAliados() {
 		return oAliados;
 	}
-	void mostrar(Graphics^g){
+	bool Mover(Graphics^ g) {
+		if (enemigo->Colision(oProta->Area()) && clock() - cooldownAtaqueEnemigo >= 2000) {
+			oProta->setVidas(-1);
+			cooldownAtaqueEnemigo = clock();
+			if (oProta->getVidas() == 0)
+				return false;
+		}
+	}
+	void mostrar(Graphics^g, Bitmap^ prota, Bitmap^ aliados, Bitmap^ Asesino, Bitmap^ corrupto, int** matriz){
 		g->DrawString("Tiempo: "+ clock(),gcnew Font("Arial",12),Brushes::Black,0,20);
+		oProta->dibujarProta(g,prota);
+		oAliados->dibujarAliados(g, aliados);
+		oAsesino->dibujar(g, Asesino, corrupto,matriz);
 	}
 	private:
 	CMapa* Mapa;
 	Cprotagonista* oProta;
 	CAliados* oAliados;
 	CAsesino* oAsesino;
+	Enemigos* enemigo;
 	int tiempo;
+	int cooldownAtaqueEnemigo = 0;
 };

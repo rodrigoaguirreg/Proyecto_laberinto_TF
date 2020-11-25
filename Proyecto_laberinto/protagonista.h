@@ -36,6 +36,9 @@ enum Direcciones { Arriba, Abajo, Izquierda, Derecha, Ninguna };
 	int getVidas() {
 		return vidas;
 	}
+	int Area() {
+		return ancho * alto;
+	}
 	void dibujarProta(Graphics^g, Bitmap^prota) {
 		g->DrawString("Vidas: " + vidas, gcnew Font("Arial", 12), Brushes::Black, 0, 0);
 		Rectangle PorcionAUsar = Rectangle(indiceX*ancho, indiceY* alto, ancho, alto);

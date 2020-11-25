@@ -1,12 +1,15 @@
 #pragma once
 #include <ctime>
 #include <stdlib.h>
-//#include <vector>
+#include <vector>
+#include<iostream>
+
 
 #ifndef _ENEMIGO_H_
 #define _ENEMIGO_H_
 
 
+using namespace std;
 using namespace System::Drawing;
 
 enum Estado_Enemigo { Eliminado, Normal, asesino };
@@ -93,9 +96,17 @@ public:
 		}
 	}
 	void mover(Graphics^ g, Bitmap^ Asesino) {
+		if (!(x + dx >= 0 && x + ancho + dx < g->VisibleClipBounds.Width))
+			dx *= -1;
 
+		x += dx;
 	}
-
+	Rectangle Area() {
+		return Rectangle(x,y,ancho,alto);
+	}
+	Rectangle NewArea() {
+		return Rectangle(x+dx, y, ancho, alto);
+	}
 	void animar() {
 		if (indiceX >= 0 && indiceX < 5) {
 			indiceX++;
@@ -105,18 +116,30 @@ public:
 				indiceX--;
 			}
 		}
-	}/*
-	class Enemigos
-	{
-		vector<CAsesino*> enemigos;
-	public:
-		Enemigos(Bitmap^ Asesino, int cant)
-		{
-			for (int i = 0; i < cant; i++)
-				enemigos.push_back(new Enemigo(Asesino));
+	}
+
+	};
+
+class Enemigos
+{
+
+	vector <CAsesino*> Asesin;
+	CAsesino* E;
+public:
+	Enemigos(int cant) {
+		for (int i = 0; i < cant; i++) {
+			Asesin.push_back(new CAsesino());
+			cant--;
 		}
 	}
-	*/
+	bool Colision(Rectangle obj) {
+		for each (CAsesino* E in Asesin) {
+			if (E->Area()
+				return true;
+			return false;
+		}
+	}
+
 };
 
 #endif
