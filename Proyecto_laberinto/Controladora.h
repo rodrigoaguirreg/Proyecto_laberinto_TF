@@ -9,11 +9,12 @@
 class CControladora
 {
 public:
-	CControladora() {
+	CControladora(int v,int t) {
 		Mapa = new CMapa();
-		oProta = new Cprotagonista(50, 50);
-		oAliados = new CAliados(50, 50);
+		oProta = new Cprotagonista(50, 50, v);
+		oAliados = new CAliados(50, 50,t);
 		oAsesino = new CAsesino();
+		tiempo=t* 1000;
 	}
 
 	~CControladora() {}
@@ -39,9 +40,13 @@ void dibujar(Graphics^ g, Bitmap^ base, Bitmap^ solido, Bitmap^ camino,Bitmap^ p
 	CAliados* getoAliados() {
 		return oAliados;
 	}
-private:
+	void mostrar(Graphics^g){
+		g->DrawString("Tiempo: "+ clock(),gcnew Font("Arial",12),Brushes::Black,0,20);
+	}
+	private:
 	CMapa* Mapa;
 	Cprotagonista* oProta;
 	CAliados* oAliados;
 	CAsesino* oAsesino;
+	int tiempo;
 };

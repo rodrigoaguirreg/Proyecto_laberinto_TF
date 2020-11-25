@@ -1,14 +1,19 @@
 #pragma once
+#ifndef _ALIADOS_H_
+#define _ALIADOS_H_
+
 #include "protagonista.h"
+
 using namespace System::Drawing;
 enum Direccioness { Arribaa, Abajoo, Izquierdaa, Derechaa, Ningunaa };
 class CAliados :public Cprotagonista
 {
 public:
-	CAliados(int x, int y) : Cprotagonista(x, y) {
+	CAliados(int x, int y, int t) : Cprotagonista(x,y,t) {
 		//posicion del jugador
 		this->x = x;
 		this->y = y;
+		this->tiempo = t;
 		//mov del jugador
 
 		dx = 0;
@@ -114,11 +119,14 @@ private:
 	float alto;
 	int indiceX;//animacion
 	int indiceY;//animacion
+	int tiempo;//animacion
 
 	Direccioness direccion;
 	Direccioness ultima;
 
-}//ultima tecla presionada para saber la posicion en la que la deje
+}
+#endif
+//ultima tecla presionada para saber la posicion en la que la deje
 /*
 private:
 	int x;

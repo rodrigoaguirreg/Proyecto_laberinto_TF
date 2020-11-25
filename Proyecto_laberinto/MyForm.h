@@ -16,7 +16,7 @@ namespace Proyectolaberinto {
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
-		CControladora* oControladora = new CControladora();
+		CControladora* oControladora = new CControladora(3,60);//3 == vidas // 60 = tiempo
 		Bitmap^ solido = gcnew Bitmap("sprites\\bmpSolido.png");
 		Bitmap^ camino = gcnew Bitmap("sprites\\camino.png");
 		Bitmap^ base = gcnew Bitmap("sprites\\bmpSolido.png");

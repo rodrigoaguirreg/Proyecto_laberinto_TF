@@ -1,12 +1,12 @@
 #pragma once
-#include <cstdlib>
 #include <ctime>
-
+#include <stdlib.h>
+//#include <vector>
 
 #ifndef _ENEMIGO_H_
 #define _ENEMIGO_H_
 
-using namespace System;
+
 using namespace System::Drawing;
 
 enum Estado_Enemigo { Eliminado, Normal, asesino };
@@ -105,7 +105,18 @@ public:
 				indiceX--;
 			}
 		}
+	}/*
+	class Enemigos
+	{
+		vector<CAsesino*> enemigos;
+	public:
+		Enemigos(Bitmap^ Asesino, int cant)
+		{
+			for (int i = 0; i < cant; i++)
+				enemigos.push_back(new Enemigo(Asesino));
+		}
 	}
+	*/
 };
 
 #endif

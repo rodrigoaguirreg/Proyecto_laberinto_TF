@@ -141,7 +141,6 @@
     <ClCompile Include="aliados.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Controladora.cpp" />
-    <ClCompile Include="corruptos.cpp" />
     <ClCompile Include="enemigos.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="pch.cpp">

@@ -5,7 +5,7 @@ enum Direcciones { Arriba, Abajo, Izquierda, Derecha, Ninguna };
  class Cprotagonista
 {
     public:
-		Cprotagonista(int x, int y){
+		Cprotagonista(int x, int y,int v){
 		//posicion del jugador
 		this->x = x;
 		this->y = y;
@@ -18,6 +18,8 @@ enum Direcciones { Arriba, Abajo, Izquierda, Derecha, Ninguna };
 		ancho = 46; //138 /3
 		alto = 65;//260/4
 
+		vidas = v;
+
 		indiceX = 0;
 		indiceY = 0;
 		direccion = Direcciones::Ninguna;
@@ -28,7 +30,14 @@ enum Direcciones { Arriba, Abajo, Izquierda, Derecha, Ninguna };
 	void setDireccion(Direcciones direccion ) {
 		this->direccion = direccion;
 	}
+	void setVidas(int value) {
+		vidas =+ value;
+	}
+	int getVidas() {
+		return vidas;
+	}
 	void dibujarProta(Graphics^g, Bitmap^prota) {
+		g->DrawString("Vidas: " + vidas, gcnew Font("Arial", 12), Brushes::Black, 0, 0);
 		Rectangle PorcionAUsar = Rectangle(indiceX*ancho, indiceY* alto, ancho, alto);
 		Rectangle Aumento = Rectangle(x, y, ancho*3, alto*3);
 		g->DrawImage(prota, Aumento, PorcionAUsar, GraphicsUnit::Pixel);
@@ -114,8 +123,8 @@ protected:
 	int alto;
 	int indiceX;//animacion
 	int indiceY;//animacion
+	int vidas;
 
 	Direcciones direccion;
 	Direcciones ultima;//ultima tecla presionada para saber la posicion en la que la deje
 };
-
