@@ -4,6 +4,8 @@
 #include <vector>
 #include<iostream>
 
+#include "newEnemigo.h"
+
 
 #ifndef _ENEMIGO_H_
 #define _ENEMIGO_H_
@@ -47,6 +49,7 @@ public:
 		ancho = 96 / 6;
 		ubicado = false;
 		estado = Normal;
+		arreglo2 = vector<enemigoBeta*>();
 	}
 	~CAsesino() {}
 
@@ -123,7 +126,8 @@ public:
 class Enemigos
 {
 
-	vector <CAsesino*> Asesin;
+	vector <CAsesino*> Asesin;	
+	vector<enemigoBeta*>arreglo2;
 	CAsesino* E;
 public:
 	Enemigos(int cant) {
@@ -134,7 +138,7 @@ public:
 	}
 	bool Colision(Rectangle obj) {
 		for each (CAsesino* E in Asesin) {
-			if (E->Area()
+			if (E->Area().IntersectsWidth(obj))
 				return true;
 			return false;
 		}
