@@ -1,6 +1,7 @@
 #pragma once
-#include<ctime>
 #include<stdlib.h>
+#include<ctime>
+
 #ifndef _MAPA_H_
 #define _MAPA_H_
 #define Filas 15

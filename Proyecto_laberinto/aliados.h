@@ -26,7 +26,7 @@ public:
 	~CAliados() {
 
 	}
-	void setDireccion(Direccioness direccion) {
+	void setDireccionn(Direccioness direccion) {
 		this->direccion = direccion;
 	}
 	void dibujarAliados(Graphics^ g, Bitmap^ aliados) {

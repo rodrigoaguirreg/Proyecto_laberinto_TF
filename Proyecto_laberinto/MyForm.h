@@ -1,5 +1,6 @@
 #pragma once
 #include "Controladora.h"
+
 namespace Proyectolaberinto {
 
 	using namespace System;
@@ -128,16 +129,16 @@ namespace Proyectolaberinto {
 		switch (e->KeyCode)
 		{
 		case Keys::Up:
-			oControladora->getoAliados()->setDireccion(Direcciones::Arriba);
+			oControladora->getoAliados()->setDireccionn(Direccioness::Arribaa);
 			break;
 		case Keys::Down:
-			oControladora->getoAliados()->setDireccion(Direcciones::Abajo);
+			oControladora->getoAliados()->setDireccionn(Direccioness::Abajoo);
 			break;
 		case Keys::Left:
-			oControladora->getoAliados()->setDireccion(Direcciones::Izquierda);
+			oControladora->getoAliados()->setDireccionn(Direccioness::Izquierdaa);
 			break;
 		case Keys::Right:
-			oControladora->getoAliados()->setDireccion(Direcciones::Derecha);
+			oControladora->getoAliados()->setDireccionn(Direccioness::Derechaa);
 			break;
 
 		default:
