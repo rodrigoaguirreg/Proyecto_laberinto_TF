@@ -26,7 +26,7 @@ public:
 	~CAliados() {
 
 	}
-	void setDireccionn(Direccioness direccion) {
+	void setDireccion(Direccioness direccion) {
 		this->direccion = direccion;
 	}
 	void dibujarAliados(Graphics^ g, Bitmap^ aliados) {
@@ -37,7 +37,7 @@ public:
 		y += dy;
 	}
 	void moverAliados(Graphics^ g, Bitmap^ aliados) {
-		direccion == Arribaa ? ancho = 45 : ancho = 46;
+		direccion == Arribaa ? ancho = 45 : ancho = 46; //ni idea v,:
 		switch (direccion)
 		{
 		case Direccioness::Arribaa:
